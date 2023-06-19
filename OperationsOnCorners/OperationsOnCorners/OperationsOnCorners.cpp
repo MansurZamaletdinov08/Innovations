@@ -39,21 +39,22 @@ int main() {
 	std::cout << "[Выходные данные]: " << std::endl;
 
 
+	std::function<void(double)> func_sin = [](const double& angle) {
+		std::cout << "sin: " << sin(angle) << " ";
+	};
+	std::function<void(double)> func_cos = [](const double& angle) {
+		std::cout << "cos: " << cos(angle) << " ";
+	};
 
-	int type = 0;
-	std::function<void(double)> funcs = [&type](const double& angle) {
-		if (type == 0) {
-			std::cout << "sin: " << sin(angle) << " ";
-			type++;
-		}
-		else {
-			std::cout << "cos: " << cos(angle) << " ";
-			type = 0;
-		}
+	std::function<void(double)> func_tan = [](const double& angle) {
+		std::cout << "tan: " << sin(angle) << " ";
 	};
 
 
-	std::vector<std::function<void(double) >> functions(2, funcs);
+	std::vector<std::function<void(double) >> functions = {func_sin, func_cos, func_tan};
+
+
+	//std::vector<std::function<void(double) >> functions(2, funcs);
 	for (const auto& angle : angles) {
 		std::cout << angle << ": ";
 		for (const auto& function : functions)
